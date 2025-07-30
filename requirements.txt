@@ -1,0 +1,17 @@
+# requirements.txt: This file lists the Python packages required for the CarePredict AI project.
+pandas
+numpy
+joblib
+python-dotenv
+scikit-learn
+catboost
+fastapi
+uvicorn
+shap
+requests
+tqdm
+loguru
+typing-extensions
+jinja2
+# streamlit             <-- Remove this (or comment out)
+# streamlit-shap        <-- Remove this (or comment out)
