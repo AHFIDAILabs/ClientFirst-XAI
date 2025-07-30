@@ -1,0 +1,33 @@
+# render.yaml
+# Configuration for deploying the CarePredict-AI FastAPI application on Render.
+
+services:
+  - type: web
+    name: carepredict-ai
+    env: python
+    region: oregon # Optional: You can choose frankfurt, ohio, or singapore
+    plan: free # Optional: Starts on the free plan
+    
+    # -- Build Configuration --
+    # Command to install dependencies from your requirements.txt file.
+    buildCommand: "pip install -r requirements.txt"
+    
+    # -- Start Configuration --
+    # Command to run the Uvicorn server for your FastAPI application.
+    # Render automatically sets the $PORT environment variable.
+    startCommand: "uvicorn app.api:app --host 0.0.0.0 --port $PORT"
+    
+    # -- Health Check --
+    # Render will ping this path to ensure your service is running correctly.
+    healthCheckPath: /
+    
+    # -- Environment Variables --
+    # Define environment variables required by your application.
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11 # Matches the version in your Dockerfile
+      - key: SATISFACTION_APP_KEY
+        # IMPORTANT: Do not commit your actual key. 
+        # Set this value securely in the Render dashboard's Environment tab.
+        # You can leave the value empty here and Render will prompt you.
+        value: ""
