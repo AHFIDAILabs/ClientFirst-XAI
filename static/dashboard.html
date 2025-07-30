@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIV Client Satisfaction Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script> </head>
+<body>
+    <div class="container dashboard-page">
+        <header>
+            <h1><img src="/static/images/icons.jpg" alt="Satisfaction Icon" class="logo-top"> HIV Client Satisfaction Dashboard</h1>
+        </header>
+        <main>
+            <section class="input-form-section">
+                <h2>📝 Client & Provider Interaction Details</h2>
+                <form id="predictionForm">
+                    <div class="form-group-grid">
+                        <fieldset>
+                            <legend>Patient Demographics</legend>
+                            <div>
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" name="Age" min="18" max="100" value="35" required>
+                            </div>
+                            <div>
+                                <label for="employment">Employment Status:</label>
+                                <select id="employment" name="Employment_Grouped" required>
+                                    </select>
+                            </div>
+                            <div>
+                                <label for="education">Education Level:</label>
+                                <select id="education" name="Education_Grouped" required>
+                                    </select>
+                            </div>
+                            <div>
+                                <label for="state">State (Optional):</label>
+                                <select id="state" name="State">
+                                    </select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Care History (in Years)</legend>
+                            <div>
+                                <label for="hivDuration">Duration of HIV Diagnosis:</label>
+                                <input type="number" id="hivDuration" name="HIV_Duration_Years" min="0.0" step="0.5" value="5.0" required>
+                            </div>
+                            <div>
+                                <label for="careDuration">Duration at This Facility:</label>
+                                <input type="number" id="careDuration" name="Care_Duration_Years" min="0.0" step="0.5" value="2.0" required>
+                            </div>
+                            <div>
+                                <label for="facilityCareDuration">Total Duration in Care:</label>
+                                <input type="number" id="facilityCareDuration" name="Facility_Care_Dur_Years" min="0.0" step="0.5" value="5.0" required>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Provider Interaction Scores (Rate 1-5)</legend>
+                            <div>
+                                <label for="empathyScore">Provider Empathy Score:</label>
+                                <input type="range" id="empathyScore" name="Empathy_Score" min="1" max="5" step="0.5" value="4.0" oninput="this.nextElementSibling.value=this.value">
+                                <output>4.0</output>
+                            </div>
+                            <div>
+                                <label for="listeningScore">Provider Listening Score:</label>
+                                <input type="range" id="listeningScore" name="Listening_Score" min="1" max="5" step="0.5" value="4.0" oninput="this.nextElementSibling.value=this.value">
+                                <output>4.0</output>
+                            </div>
+                            <div>
+                                <label for="decisionShareScore">Shared Decision-Making Score:</label>
+                                <input type="range" id="decisionShareScore" name="Decision_Share_Score" min="1" max="5" step="0.5" value="3.0" oninput="this.nextElementSibling.value=this.value">
+                                <output>3.0</output>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Communication & Information</legend>
+                            <div>
+                                <label for="examExplained">Provider explained exams/procedures clearly:</label>
+                                <select id="examExplained" name="Exam_Explained" required>
+                                    <option value="Strongly Disagree">Strongly Disagree</option>
+                                    <option value="Disagree">Disagree</option>
+                                    <option value="Neither Agree Or Disagree">Neither Agree Or Disagree</option>
+                                    <option value="Agree" selected>Agree</option>
+                                    <option value="Strongly Agree">Strongly Agree</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="discussNextSteps">Provider discussed the next steps in my care:</label>
+                                <select id="discussNextSteps" name="Discuss_NextSteps" required>
+                                    <option value="Strongly Disagree">Strongly Disagree</option>
+                                    <option value="Disagree">Disagree</option>
+                                    <option value="Neither Agree Or Disagree">Neither Agree Or Disagree</option>
+                                    <option value="Agree" selected>Agree</option>
+                                    <option value="Strongly Agree">Strongly Agree</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button type="submit">🚀 Predict & Explain Satisfaction</button>
+                </form>
+            </section>
+
+            <hr class="divider">
+
+            <section id="results-section" class="results-section" style="display: none;">
+                <h2>Prediction Results</h2>
+                <div class="prediction-metrics">
+                    <div class="metric-card">
+                        <h3>Predicted Satisfaction Level</h3>
+                        <p id="predictedSatisfaction" class="big-text"></p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Prediction Confidence</h3>
+                        <p id="predictionConfidence" class="big-text"></p>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openTab(event, 'aiSummary')">✨ AI Summary</button>
+                    <button class="tab-button" onclick="openTab(event, 'detailedAnalysis')">🧠 Detailed Analysis</button>
+                    <button class="tab-button" onclick="openTab(event, 'modelInput')">⚙️ Model Input</button>
+                </div>
+
+                <div id="aiSummary" class="tab-content active">
+                    <h3>📝 Generative AI Explanation</h3>
+                    <div id="genaiExplanation" class="explanation-content"></div>
+                </div>
+
+                <div id="detailedAnalysis" class="tab-content">
+                    <h3>🎯 Top Contributing Factors (SHAP)</h3>
+                    <ul id="topFeaturesList" class="features-list"></ul>
+                    <h3>📈 SHAP Waterfall Plot (Conceptual - requires SHAP JS or D3)</h3>
+                    <div id="shapWaterfallPlot" class="chart-container">
+                        <p>A SHAP waterfall plot would appear here. Due to the complexity of rendering SHAP plots directly in vanilla JS, please refer to the detailed analysis above for the top contributing factors.</p>
+                        <canvas id="shapBarChart"></canvas> </div>
+                </div>
+
+                <div id="modelInput" class="tab-content">
+                    <h3>🔢 Features Sent to Model</h3>
+                    <pre><code id="modelInputJson"></code></pre>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 HIV Client Satisfaction App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to load categories for dropdowns
+            async function loadCategories() {
+                try {
+                    const response = await fetch('/api/categories');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const categories = await response.json();
+                    
+                    // Populate Employment_Grouped
+                    const employmentSelect = document.getElementById('employment');
+                    employmentSelect.innerHTML = ''; // Clear existing options
+                    categories.Employment_Grouped.forEach(cat => {
+                        const option = document.createElement('option');
+                        option.value = cat;
+                        option.textContent = cat;
+                        employmentSelect.appendChild(option);
+                    });
+
+                    // Populate Education_Grouped
+                    const educationSelect = document.getElementById('education');
+                    educationSelect.innerHTML = '';
+                    categories.Education_Grouped.forEach(cat => {
+                        const option = document.createElement('option');
+                        option.value = cat;
+                        option.textContent = cat;
+                        educationSelect.appendChild(option);
+                    });
+
+                    // Populate State (optional, if available in categories)
+                    const stateSelect = document.getElementById('state');
+                    if (categories.State && categories.State.length > 0) {
+                        stateSelect.innerHTML = '<option value="">Select State (Optional)</option>'; // Add a default option
+                        categories.State.forEach(cat => {
+                            const option = document.createElement('option');
+                            option.value = cat;
+                            option.textContent = cat;
+                            stateSelect.appendChild(option);
+                        });
+                    } else {
+                        stateSelect.parentElement.style.display = 'none'; // Hide if no states
+                    }
+
+                } catch (error) {
+                    console.error('Error loading categories:', error);
+                    alert('Failed to load category options. Please try again later.');
+                }
+            }
+
+            loadCategories(); // Call on page load
+
+            // Handle form submission
+            const form = document.getElementById('predictionForm');
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => {
+                    // Convert numeric inputs to numbers
+                    if (['Age', 'HIV_Duration_Years', 'Care_Duration_Years', 'Facility_Care_Dur_Years', 'Empathy_Score', 'Listening_Score', 'Decision_Share_Score'].includes(key)) {
+                        data[key] = parseFloat(value);
+                    } else {
+                        data[key] = value;
+                    }
+                });
+
+                // Handle optional State field: send null if not selected
+                if (!data['State'] || data['State'] === '') {
+                    delete data['State'];
+                }
+
+                document.querySelector('button[type="submit"]').textContent = 'Analyzing...';
+                document.querySelector('button[type="submit"]').disabled = true;
+                document.getElementById('results-section').style.display = 'none'; // Hide previous results
+
+                try {
+                    const response = await fetch('/api/predict_explain', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    // Display results
+                    document.getElementById('predictedSatisfaction').textContent = result.prediction;
+                    document.getElementById('predictionConfidence').textContent = result.confidence;
+                    document.getElementById('genaiExplanation').innerHTML = marked.parse(result.genai_explanation); // Use marked.js for markdown rendering
+
+                    const topFeaturesList = document.getElementById('topFeaturesList');
+                    topFeaturesList.innerHTML = '';
+                    for (const feature in result.top_features) {
+                        const li = document.createElement('li');
+                        const value = result.top_features[feature];
+                        const impact = value > 0 ? 'Positive' : 'Negative';
+                        li.innerHTML = `<strong>${feature.replace(/_/g, ' ')}</strong>: SHAP Value = <code>${value.toFixed(3)}</code> (<span class="${impact.toLowerCase()}">${impact}</span> impact)`;
+                        topFeaturesList.appendChild(li);
+                    }
+                    
+                    document.getElementById('modelInputJson').textContent = JSON.stringify(result.feature_values.reduce((obj, val, i) => {
+                        obj[result.feature_names[i]] = val;
+                        return obj;
+                    }, {}), null, 2);
+
+
+                    // Render simple SHAP bar chart (alternative to waterfall)
+                    renderShapBarChart(result.feature_names, result.shap_values);
+
+                    document.getElementById('results-section').style.display = 'block'; // Show results
+                    document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' }); // Scroll to results
+
+                } catch (error) {
+                    console.error('Error during prediction:', error);
+                    alert(`Prediction failed: ${error.message}`);
+                } finally {
+                    document.querySelector('button[type="submit"]').textContent = '🚀 Predict & Explain Satisfaction';
+                    document.querySelector('button[type="submit"]').disabled = false;
+                }
+            });
+
+            // Tab functionality
+            window.openTab = function(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tab-content");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tab-button");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+
+            // Default open first tab
+            document.querySelector('.tab-button').click();
+
+            // Simple SHAP Bar Chart rendering
+            function renderShapBarChart(featureNames, shapValues) {
+                const ctx = document.getElementById('shapBarChart').getContext('2d');
+                
+                // Sort features by absolute SHAP value for better visualization
+                const combined = featureNames.map((name, i) => ({ name, value: shapValues[i] }));
+                combined.sort((a, b) => Math.abs(b.value) - Math.abs(a.value));
+
+                const sortedFeatureNames = combined.map(item => item.name.replace(/_/g, ' '));
+                const sortedShapValues = combined.map(item => item.value);
+
+                if (window.shapChart) {
+                    window.shapChart.destroy();
+                }
+
+                window.shapChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: sortedFeatureNames,
+                        datasets: [{
+                            label: 'SHAP Value',
+                            data: sortedShapValues,
+                            backgroundColor: sortedShapValues.map(value => value > 0 ? '#4CAF50' : '#F44336'), // Green for positive, Red for negative
+                            borderColor: sortedShapValues.map(value => value > 0 ? '#388E3C' : '#D32F2F'),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // Horizontal bars
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'SHAP Value'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Feature'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Feature Importance (SHAP Values)'
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> </body>
+</html>
