@@ -1,6 +1,6 @@
 ## ClientFirst-XAI: Client Satisfaction Prediction & Explanation
 
-### Table of Contents
+## Table of Contents
 - [About the Project](#about-the-project)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -17,10 +17,10 @@
 
 ---
 
-### About the Project
+## About the Project
 ClientFirst-XAI is an intelligent application designed to predict and explain client satisfaction in clinical settings, specifically within an HIV clinic context. It uses machine learning and rule-based systems to provide insights into satisfaction drivers, along with actionable suggestions for quality improvement.
 
-### Features
+## Features
 * **Client Satisfaction Prediction**
 * **SHAP-based Feature Importance**
 * **Rule-Based Explanations**
@@ -29,7 +29,7 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 * **FastAPI Backend**
 * **Static Web Pages**
 
-### Technologies Used
+## Technologies Used
 
 **Backend:**
 * Python 3.9+
@@ -52,19 +52,19 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 **AI Service:**
 * OpenRouter
 
-### Getting Started
+## Getting Started
 
-#### Prerequisites
+### Prerequisites
 * Python 3.9+
 * `pip`
 * `venv`
 * Git
 
-#### Local Development
+### Local Development
 1. Clone the repository:
     ```bash
-    git git@github.com:AHFIDAILabs/ClientFirst-XAI.git
-    cd CarePredict-AI
+    git clone https://github.com/AHFIDAILabs/ClientFirst-XAI.git
+    cd ClientFirst-XAI
     ```
 2. Create and activate a virtual environment:
     ```bash
@@ -95,7 +95,7 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 * Swagger Docs: `http://127.0.0.1:8000/docs`
 * ReDoc: `http://127.0.0.1:8000/redoc`
 
-### Deployment on Render
+## Deployment on Render
 
 1. Push the repository to GitHub.
 2. Create a [Render](https://render.com/) account.
@@ -112,14 +112,14 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 Your app will be live at something like:  
 `https://your-service-name.onrender.com`
 
-### API Endpoints
+## API Endpoints
 
 * `/` (GET): Static home page  
 * `/dashboard` (GET): Client satisfaction dashboard  
 * `/api/categories` (GET): Returns categorical features and their values  
 * `/api/predict_explain` (POST): Accepts client data and returns predictions with explanations
 
-#### Request Example
+### Request Example
 ```json
 {
     "Age": 35,
@@ -135,7 +135,7 @@ Your app will be live at something like:
 }
 ```
 
-#### Response Example
+### Response Example
 ```json
 {
     "prediction": "Satisfied",
@@ -159,9 +159,9 @@ Your app will be live at something like:
 }
 ```
 
-### Project Structure
+## Project Structure
 ```
-CarePredict-AI/
+ClientFirst-XAI/
 ├── app/
 │   ├── __init__.py
 │   ├── api.py
@@ -190,7 +190,7 @@ CarePredict-AI/
 └── README.md
 ```
 
-### Future Enhancements
+## Future Enhancements
 * Stronger input validation
 * Authentication system
 * Satisfaction trend analysis
@@ -199,7 +199,7 @@ CarePredict-AI/
 * Improved dashboard design
 * Model retraining pipeline
 
-### Contributing
+## Contributing
 
 1. Fork the repo  
 2. Create a branch: `git checkout -b feature/my-feature`  
@@ -207,12 +207,12 @@ CarePredict-AI/
 4. Push the branch: `git push origin feature/my-feature`  
 5. Open a Pull Request  
 
-### License
+## License
 MIT License. See `LICENSE` file.
 
-### Contact
+## Contact
 **AHFID AI & Social Informatics Team**  
 Email: aiteam@ahfid.org 
-Project: [GitHub - CarePredict-AI](https://github.com/AHFIDAILabs/ClientFirst-XAI)
+Project: [GitHub - ClientFirst-XAI](https://github.com/AHFIDAILabs/ClientFirst-XAI)
 
 Made with ❤️ by Wale Ogundeji
