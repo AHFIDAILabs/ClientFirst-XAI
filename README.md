@@ -110,7 +110,7 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 7. Click **Create Web Service** and wait for deployment to complete.
 
 Your app will be live at something like:  
-`https://your-service-name.onrender.com`
+`https://clientfirst-xai.onrender.com`
 
 ## API Endpoints
 
