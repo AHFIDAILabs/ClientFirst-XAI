@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Gamsuwa</title> [cite: 128]
+    <title>Contact Us | Gamsuwa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="icon" href="/static/images/icons.jpg">
 </head>
-<body class="contact-page"> 
+<body class="contact-page">
     <div class="container">
         <header>
             <div class="header-top">
@@ -19,17 +19,17 @@
                 <div class="dark-mode-toggle">
                     <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
                     <label for="darkModeToggle" class="toggle-label">
-                        <i class="fas fa-moon"></i> [cite: 6]
+                        <i class="fas fa-moon"></i>
                         <i class="fas fa-sun"></i>
                         <span class="ball"></span>
                     </label>
                 </div>
             </div>
             <nav class="main-nav">
-                <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
-                <a href="dashboard.html"><i class="fas fa-chart-line"></i><span>Prediction</span></a>
-                <a href="contact.html"><i class="fas fa-envelope"></i><span>Contact</span></a>
-                <a href="faq.html"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+                <a href="/"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="/dashboard"><i class="fas fa-chart-line"></i><span>Prediction</span></a>
+                <a href="/contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+                <a href="/faq"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
                 <div class="search-bar">
                     <input type="text" placeholder="Search...">
                     <button><i class="fas fa-search"></i></button>
@@ -38,31 +38,41 @@
         </header>
 
         <main>
-            <section class="contact-section">
-                <h2>📬 We'd love to hear from you</h2> [cite: 130]
-                <p>Thank you for your interest in reaching out to us. [cite: 131] We’re eager to hear from you and are committed to providing assistance with any questions or concerns you may have.</p> [cite: 131]
-                <form action="/send-message" method="POST" class="contact-form">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+            <div class="main-content-wrapper">
+                <section class="contact-section">
+                    <h2>📬 We'd love to hear from you</h2>
+                    <p>Thank you for your interest in reaching out to us. We’re eager to hear from you and are committed to providing assistance with any questions or concerns you may have.</p>
 
-                    <label for="email">Email:</label> [cite: 132]
-                    <input type="email" id="email" name="email" required>
+                    <div id="success-message" class="success-alert" style="display:none;">
+                        ✅ Your message has been sent successfully! We will get back to you shortly.
+                    </div>
 
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
+                    <form action="/send-message" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit">📨 Send Message</button>
+                    </form>
+                </section>
 
-                    <button type="submit">📨 Send Message</button>
-                </form>
-            </section>
-
-            <section class="contact-info">
-                <h3>📡 Contact Channels</h3>
-                <ul>
-                    <li>Email: <a href="mailto:info@ahfid.org">info@ahfid.org</a></li>
-                    <li>Phone: <a href="tel:+2348034011043">+234 803 401 1043</a></li> [cite: 134]
-                    <li>Address: Abuja, Nigeria</li>
-                </ul>
-            </section>
+                <section class="contact-info-section">
+                    <h3>📡 Contact Channels</h3>
+                    <ul>
+                        <li>Email: <a href="mailto:info@ahfid.org">info@ahfid.org</a></li>
+                        <li>Phone: <a href="tel:+2348034011043">+234 803 401 1043</a></li>
+                        <li>Address: Abuja, Nigeria</li>
+                    </ul>
+                </section>
+            </div>
         </main>
     </div>
 
@@ -70,7 +80,7 @@
         <a href="https://ahfid.org/contact-us/#" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
         <a href="https://wa.me/2348034011043" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://x.com/Ahfidorg" target="_blank" title="X (Twitter)"><i class="fab fa-xing"></i></a>
-        <a href="https://instagram.com/Ahfidorg" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a> [cite: 12]
+        <a href="https://instagram.com/Ahfidorg" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://youtube.com/@AfricaHubforInnovation" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         <a href="https://web.facebook.com/profile.php?id=61578622870670" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
     </div>
@@ -78,7 +88,7 @@
     <img src="/static/images/ahfid.png" alt="AHFID Logo" class="ahfid-logo-bottom">
 
     <footer>
-        <p>© 2025 Gamsuwa - Africa Hub for Innovation and Development. All rights reserved.</p> [cite: 13]
+        <p>© 2025 Gamsuwa - Africa Hub for Innovation and Development. All rights reserved.</p>
     </footer>
 
     <script>
@@ -86,20 +96,31 @@
             const darkModeToggle = document.getElementById('darkModeToggle');
             const body = document.body;
 
+            // Dark Mode Toggle Logic
             if (localStorage.getItem('darkMode') === 'enabled') {
-                body.classList.add('dark-mode'); [cite: 14]
+                body.classList.add('dark-mode');
                 darkModeToggle.checked = true;
             }
 
             darkModeToggle.addEventListener('change', () => {
                 if (darkModeToggle.checked) {
-                    body.classList.add('dark-mode'); [cite: 15]
+                    body.classList.add('dark-mode');
                     localStorage.setItem('darkMode', 'enabled');
                 } else {
                     body.classList.remove('dark-mode');
                     localStorage.setItem('darkMode', 'disabled');
                 }
             });
+
+            // Form Submission Success Message Logic
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                const successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    history.replaceState(null, '', location.pathname); // Clean the URL
+                }
+            }
         });
     </script>
 </body>
