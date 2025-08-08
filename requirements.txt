@@ -13,5 +13,6 @@ tqdm
 loguru
 typing-extensions
 jinja2
+python-multipart
 # streamlit             <-- Remove this (or comment out)
 # streamlit-shap        <-- Remove this (or comment out)
