@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Gamsuwa</title> [cite: 138]
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/images/icons.jpg">
+</head>
+<body class="faq-page">
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1>Gamsuwa</h1>
+                <div class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
+                    <label for="darkModeToggle" class="toggle-label">
+                        <i class="fas fa-moon"></i> [cite: 6]
+                        <i class="fas fa-sun"></i>
+                        <span class="ball"></span>
+                    </label>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="dashboard.html"><i class="fas fa-chart-line"></i><span>Prediction</span></a>
+                <a href="contact.html"><i class="fas fa-envelope"></i><span>Contact</span></a>
+                <a href="faq.html"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="faq-section">
+                <h2>❓ Frequently Asked Questions</h2> [cite: 140]
+                <div class="faq-item">
+                    <h3>What is Gamsuwa?</h3>
+                    <p>Gamsuwa is a platform that predicts and explains HIV client satisfaction based on service interaction data.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my data secure?</h3>
+                    <p>Yes. All inputs are anonymized and never stored or shared. [cite: 142] Your privacy is our priority.</p> [cite: 142]
+                </div>
+                <div class="faq-item">
+                    <h3>Can providers use this tool for training?</h3>
+                    <p>Absolutely. Gamsuwa provides explanations that can help improve provider-client communication.</p> [cite: 143]
+                </div>
+                <div class="faq-item">
+                    <h3>How accurate is the model?</h3>
+                    <p>The predictive model is trained on real-world data and optimized for both accuracy and fairness. But no prediction is perfect. [cite: 144] Use it as guidance, not gospel.</p> [cite: 144]
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="social-media-icons">
+        <a href="https://ahfid.org/contact-us/#" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+        <a href="https://wa.me/2348034011043" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://x.com/Ahfidorg" target="_blank" title="X (Twitter)"><i class="fab fa-xing"></i></a>
+        <a href="https://instagram.com/Ahfidorg" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a> [cite: 12]
+        <a href="https://youtube.com/@AfricaHubforInnovation" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://web.facebook.com/profile.php?id=61578622870670" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+    </div>
+
+    <img src="/static/images/ahfid.png" alt="AHFID Logo" class="ahfid-logo-bottom">
+
+    <footer>
+        <p>© 2025 Gamsuwa - Africa Hub for Innovation and Development. All rights reserved.</p> [cite: 13]
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                body.classList.add('dark-mode'); [cite: 14]
+                darkModeToggle.checked = true;
+            }
+
+            darkModeToggle.addEventListener('change', () => {
+                if (darkModeToggle.checked) {
+                    body.classList.add('dark-mode'); [cite: 15]
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
