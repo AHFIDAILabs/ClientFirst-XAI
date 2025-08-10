@@ -7,7 +7,9 @@ The project processes raw HIV client survey data from `.sav` format, cleans and 
 ---
 
 ## 2. Data Workflow Diagram
+```
 ![Data Workflow](flowchart.png)
+```
 
 ```
 flowchart TD
