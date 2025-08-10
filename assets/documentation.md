@@ -7,11 +7,10 @@ The project processes raw HIV client survey data from `.sav` format, cleans and 
 ---
 
 ## 2. Data Workflow Diagram
-```
-![Data Workflow](flowchart.png)
-```
 
-```
+![Data Workflow](flowchart.png)
+
+
 flowchart TD
     A[Data Ingestion] --> B[Preprocessing]
     B --> C{Data Cleaning & Feature Engineering}
@@ -22,9 +21,7 @@ flowchart TD
     G --> H[Explainable AI]
     H --> I[API Development]
     I --> J[ClientFirst-XAI Application Deployment]
-```
 
-```
 graph TD
     subgraph Data Ingestion
         A1[Read .sav Files] --> A2[Drop Irrelevant Columns] --> A3[Convert to CSV]
@@ -53,7 +50,6 @@ graph TD
     subgraph API Development
         I1[FastAPI Backend] --> I2[Prediction Endpoint] --> I3[Explanation Endpoint] --> I4[Static Pages & Contact Form]
     end
-```
 ---
 
 ## 3. Data Import and Conversion
