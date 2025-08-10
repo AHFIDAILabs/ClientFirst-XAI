@@ -7,7 +7,7 @@ The project processes raw HIV client survey data from `.sav` format, cleans and 
 ---
 
 ## 2. Data Workflow Diagram
-
+**Flowchart**
 ```mermaid
 flowchart TD
     A[Data Ingestion] --> B[Preprocessing]
@@ -19,7 +19,10 @@ flowchart TD
     G --> H[Explainable AI]
     H --> I[API Development]
     I --> J[ClientFirst-XAI Application Deployment]
+```
 
+**Sub-Process Details:**
+```mermaid
 graph TD
     subgraph Data Ingestion
         A1[Read .sav Files] --> A2[Drop Irrelevant Columns] --> A3[Convert to CSV]
