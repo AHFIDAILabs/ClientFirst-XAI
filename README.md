@@ -40,6 +40,7 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 * shap
 * requests
 * python-dotenv
+* python-multipart
 
 **Frontend:**
 * HTML5
@@ -82,6 +83,9 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
     Create a `.env` file and add:
     ```
     SATISFACTION_APP_KEY="your_openrouter_api_key_here"
+
+    SENDER_EMAIL="your_new_app_email@gmail.com"
+    SENDER_PASSWORD="your_16_digit_app_password"
     ```
 
 5. Run the application:
@@ -92,6 +96,8 @@ ClientFirst-XAI is an intelligent application designed to predict and explain cl
 6. Access locally:
 * Home: `http://127.0.0.1:8000/`
 * Dashboard: `http://127.0.0.1:8000/dashboard`
+* Contact: `http://127.0.0.1:8000/contact`
+* FAQ: `http://127.0.0.1:8000/faq`
 * Swagger Docs: `http://127.0.0.1:8000/docs`
 * ReDoc: `http://127.0.0.1:8000/redoc`
 
@@ -115,9 +121,12 @@ Your app will be live at something like:
 ## API Endpoints
 
 * `/` (GET): Static home page  
-* `/dashboard` (GET): Client satisfaction dashboard  
+* `/dashboard` (GET): Client satisfaction dashboard
+* `/contact` (GET): Contact Us page
+* `/faq` (GET): FAQ page  
 * `/api/categories` (GET): Returns categorical features and their values  
 * `/api/predict_explain` (POST): Accepts client data and returns predictions with explanations
+* `/api/send-message` (POST): Message submission      
 
 ### Request Example
 ```json
