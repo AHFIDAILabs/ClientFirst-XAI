@@ -12,7 +12,7 @@ The project processes raw HIV client survey data from `.sav` format, cleans and 
 ```
 flowchart TD
     A[Data Ingestion] --> B[Preprocessing]
-    B --> C[Data Cleaning & Feature Engineering]
+    B --> C{Data Cleaning & Feature Engineering}
     C --> D[Class Balancing with CTGAN]
     D --> E[Modelling]
     E --> F[Model Evaluation]
@@ -20,49 +20,36 @@ flowchart TD
     G --> H[Explainable AI]
     H --> I[API Development]
     I --> J[ClientFirst-XAI Application Deployment]
+```
 
-    subgraph A1[Data Ingestion]
-        A1a[Read .sav Files]
-        A1b[Drop Irrelevant Columns]
-        A1c[Convert to CSV]
+```
+graph TD
+    subgraph Data Ingestion
+        A1[Read .sav Files] --> A2[Drop Irrelevant Columns] --> A3[Convert to CSV]
     end
     
-    subgraph B1[Preprocessing]
-        B1a[Merge Datasets]
-        B1b[Standardize Column Names & Values]
-        B1c[Fill Missing Data]
+    subgraph Preprocessing
+        B1[Merge Datasets] --> B2[Standardize Column Names & Values] --> B3[Fill Missing Data]
     end
 
-    subgraph C1[Feature Engineering]
-        C1a[Create Derived Features]
-        C1b[Aggregate Likert Scores]
-        C1c[Interaction Terms & Ratios]
+    subgraph Feature Engineering
+        C1[Create Derived Features] --> C2[Aggregate Likert Scores] --> C3[Interaction Terms & Ratios]
     end
 
-    subgraph D1[CTGAN Balancing]
-        D1a[Identify Underrepresented Classes]
-        D1b[Generate Synthetic Data]
-        D1c[Merge Synthetic & Original Data]
+    subgraph CTGAN Balancing
+        D1[Identify Underrepresented Classes] --> D2[Generate Synthetic Data] --> D3[Merge Synthetic & Original Data]
     end
 
-    subgraph E1[Modelling]
-        E1a[Train-Test Split]
-        E1b[Scaling & Encoding]
-        E1c[Train Multiple Algorithms]
-        E1d[Hyperparameter Tuning]
+    subgraph Modelling
+        E1[Train-Test Split] --> E2[Scaling & Encoding] --> E3[Train Multiple Algorithms] --> E4[Hyperparameter Tuning]
     end
 
-    subgraph H1[Explainable AI]
-        H1a[SHAP Explanations]
-        H1b[Rule-Based Interpretations]
-        H1c[LLM Narrative Generation]
+    subgraph Explainable AI
+        H1[SHAP Explanations] --> H2[Rule-Based Interpretations] --> H3[LLM Narrative Generation]
     end
 
-    subgraph I1[API Development]
-        I1a[FastAPI Backend]
-        I1b[Prediction Endpoint]
-        I1c[Explanation Endpoint]
-        I1d[Static Pages & Contact Form]
+    subgraph API Development
+        I1[FastAPI Backend] --> I2[Prediction Endpoint] --> I3[Explanation Endpoint] --> I4[Static Pages & Contact Form]
     end
 ```
 ---
