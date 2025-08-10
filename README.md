@@ -1,4 +1,4 @@
-## ClientFirst-XAI: Client Satisfaction Prediction & Explanation
+## Gamsuwa: Client Satisfaction Prediction & Explanation
 
 ## Table of Contents
 - [About the Project](#about-the-project)
@@ -18,7 +18,7 @@
 ---
 
 ## About the Project
-ClientFirst-XAI is an intelligent application designed to predict and explain client satisfaction in clinical settings, specifically within an HIV clinic context. It uses machine learning and rule-based systems to provide insights into satisfaction drivers, along with actionable suggestions for quality improvement.
+Gamsuwa is an intelligent application designed to predict and explain client satisfaction in clinical settings, specifically within an HIV clinic context. It uses machine learning and rule-based systems to provide insights into satisfaction drivers, along with actionable suggestions for quality improvement.
 
 ## Features
 * **Client Satisfaction Prediction**
