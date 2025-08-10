@@ -1,4 +1,4 @@
-# This is the API module for the core explanation logic of the CarePredict AI application.
+# This is the API module for the core explanation logic of the ClientFirst-XAI application.
 import shap
 import pandas as pd
 import numpy as np

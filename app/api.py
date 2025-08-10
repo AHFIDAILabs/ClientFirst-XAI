@@ -1,5 +1,5 @@
 # app/api.py
-# This is the main FastAPI application file of the CarePredict AI application.
+# This is the main FastAPI application file of the ClientFirst-XAI application.
 from fastapi import FastAPI, HTTPException, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
