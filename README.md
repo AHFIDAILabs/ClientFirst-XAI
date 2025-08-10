@@ -172,44 +172,51 @@ Your app will be live at something like:
 
 ```mermaid
 graph TD
-    A[ClientFirst-XAI]
-    A --> B[app/]
+    subgraph ClientFirst-XAI Project Structure
+
+    A(ClientFirst-XAI)
+
+    %% Core Application Logic
+    A --> B(app/)
     B --> B1[__init__.py]
     B --> B2[api.py]
     B --> B3[explanation_engine.py]
     B --> B4[model_utils.py]
 
-    A --> C[assets/]
+    %% Assets & Data
+    A --> C(assets/)
     C --> C1[documentation.md]
-
-    A --> D[data/]
+    A --> D(data/)
     D --> D1[processed_data.csv]
 
-    A --> E[model/]
+    %% Machine Learning Model & Notebooks
+    A --> E(model/)
     E --> E1[categories.joblib]
     E --> E2[important_features.joblib]
     E --> E3[label_encoder.joblib]
     E --> E4[top_categorical_features.joblib]
     E --> E5[top10_model.joblib]
 
-    A --> F[notebooks/]
+    A --> F(notebooks/)
     F --> F1[01_data_conversion.ipynb]
     F --> F2[02_data_transformation.ipynb]
     F --> F3[03_data_synthesis_CTGAN.ipynb]
     F --> F4[04_data_modelling_&_explanation.ipynb]
 
-    A --> G[static/]
+    %% Frontend Static Files
+    A --> G(static/)
     G --> G1[contact.html]
     G --> G2[dashboard.html]
     G --> G3[faq.html]
     G --> G4[index.html]
     G --> G5[style.css]
-    G --> H[images/]
+    G --> H(images/)
     H --> H1[ahfid.png]
     H --> H2[background.jpg]
     H --> H3[customer-satisfaction.jpg]
     H --> H4[icons.jpg]
-
+    
+    %% Root Configuration Files
     A --> I[.env]
     A --> J[.gitignore]
     A --> K[Dockerfile]
@@ -217,6 +224,8 @@ graph TD
     A --> M[render.yaml]
     A --> N[requirements.txt]
     A --> O[train_model.py]
+
+    end
 ```
 
 ```
