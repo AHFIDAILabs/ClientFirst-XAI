@@ -7,9 +7,9 @@ The project processes raw HIV client survey data from `.sav` format, cleans and 
 ---
 
 ## 2. Data Workflow Diagram
+![Data Workflow](flowchart.png)
 
-You can include this Mermaid diagram directly in your documentation.md. It will render automatically if viewed on platforms that support Mermaid (such as GitHub, GitLab, or MkDocs with Mermaid enabled). If your Markdown viewer does not support Mermaid, you will need to run it through a Mermaid live editor or convert it to an image.
-
+```
 flowchart TD
     A[Data Ingestion] --> B[Preprocessing]
     B --> C[Data Cleaning & Feature Engineering]
@@ -64,9 +64,7 @@ flowchart TD
         I1c[Explanation Endpoint]
         I1d[Static Pages & Contact Form]
     end
-
-![Data Workflow](flowchart.png)
-
+```
 ---
 
 ## 3. Data Import and Conversion
