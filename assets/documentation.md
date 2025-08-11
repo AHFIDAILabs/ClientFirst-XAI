@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-The project processes raw HIV client survey data from `.sav` format, cleans and standardizes it, merges multiple datasets, engineers new features, addresses class imbalance with synthetic data generation (CTGAN), builds predictive models, and deploys a web application (ClientFirst-XAI) with explainable AI capabilities.
+The project processes raw HIV client survey data from `.sav` format, cleans and standardizes it, merges multiple datasets, engineers new features, addresses class imbalance with synthetic data generation (CTGAN), builds predictive models, and deploys a web application (Gamsuwa) with explainable AI capabilities.
 
 ---
 
@@ -132,17 +132,17 @@ Saved final balanced dataset as `balanced.csv`, produces a ready-to-use dataset 
 ## 7. Synthetic Data Evaluation
 
 **Step 20: Diagnostic Testing**
-Ran `run_diagnostic` to validate synthetic data schema and constraints (Achieved 100% in data validity and structure). This confirms that synthetic data respects the schema and constraints of the original data. 
+Ran `run_diagnostic` to validate synthetic data schema and constraints (achieved 100% in data validity and structure). This confirms that synthetic data respects the schema and constraints of the original data. 
 
 **Step 21: Quality Evaluation**
-Assessed column shapes and pair trends  with "evaluate\_quality". Scores were 84.67% and 71.9%, averaging 78.28%. This shows that synthetic data mimics the original data distribution and relationships closely enough for practical use.
+Assessed column shapes and pair trends  with `evaluate\_quality`. Scores were `84.67%` and `71.9%`, averaging `78.28%`. This shows that synthetic data mimics the original data distribution and relationships closely enough for practical use.
 
 ---
 
 ## 8. Data Cleaning and Feature Engineering
 
 **Step 22: Data Transformation for Modelling**
-Converted categorical ranges for `Age`, `Num of Children`, `Monthly Income`, and HIV care duration fields into numeric midpoints. Many ML models require numeric inputs; midpoints approximate category positions without losing order.
+Converted categorical ranges for `Age`, `Num of Children`, `Monthly Income`, and `HIV care duration` fields into numeric midpoints. Many ML models require numeric inputs; midpoints approximate category positions without losing order.
 
 **Step 23: Missing Data Treatment**
 Added missing indicator for `Monthly Income` and imputed missing values with the median. This preserves information about missingness while ensuring models have complete numeric data.
@@ -154,7 +154,7 @@ Used Z-scores to detect outliers in continuous features and applied log transfor
 Cleaned survey response text (trimmed spaces, standardized casing) and converted to numeric scores to facilitates computation of aggregate satisfaction measures and consistent model input.
 
 **Step 26: Grouped Categorical Variables**
-Created simplified groupings for education, employment, and marital status to reduces category sparsity and improves model stability.
+Created simplified groupings for `education`, `employment`, and `marital status` to reduces category sparsity and improves model stability.
 
 **Step 27: Interaction Features and Ratios**
 Created ratios like `HIV_Care_Duration_Ratio` and product terms (interaction terms) such as `Age_x_HIV_Duration` to captures nuanced relationships between demographic and clinical features.
@@ -173,7 +173,7 @@ Removed duplicates ignoring `EnumID` to ensure no repeated observations bias th
 ## 9. Modelling
 
 **Step 31: Train-Test Split**
-Split into 80% training and 20% testing with stratification on satisfaction levels. This is to maintain class proportions and ensure fair model evaluation.
+Split into `80%` training and `20%` testing with stratification on satisfaction levels. This is to maintain class proportions and ensure fair model evaluation.
 
 **Step 32: Preprocessing Pipeline**
 Applied `StandardScaler` to numeric features and `OrdinalEncoder` to categorical features. Standardization improves gradient-based model performance; encoding ensures numeric representation for categorical features.
@@ -183,7 +183,6 @@ Calculated balanced class weights to counteract residual class imbalance. This i
 
 **Step 34: Model Training and Hyperparameter Tuning**
 Trained and tuned multiple algorithms:
-
 * RandomForestClassifier (RandomizedSearchCV)
 * XGBoostClassifier (GridSearchCV with sample weights)
 * LightGBMClassifier (GridSearchCV)
