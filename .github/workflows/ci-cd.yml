@@ -78,4 +78,11 @@ jobs:
     steps:
     - name: Deploy to Render
       run: |
-        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+        if [ -z "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
+          echo "Warning: RENDER_DEPLOY_HOOK secret not set"
+          exit 0
+        fi
+        curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}" \
+          -H "Content-Type: application/json" \
+          -d '{}' \
+          -v
