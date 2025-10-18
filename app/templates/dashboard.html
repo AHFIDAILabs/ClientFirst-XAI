@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Dashboard | Gamsuwa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="icon" href="/static/images/icons.jpg">
+</head>
+<body class="dashboard-page">
+    <div class="container">
+        <header>
+            <div class="header-container">
+                <div class="brand-section">
+                    <h1>Gamsuwa</h1>
+                </div>
+                
+                <div class="nav-section">
+                    <nav class="main-nav">
+                        <a href="/"><i class="fas fa-home"></i><span>Home</span></a>
+                        <a href="/dashboard"><i class="fas fa-chart-line"></i><span>Prediction</span></a>
+                        <a href="/contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+                        <a href="/faq"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+                    </nav>
+                    
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="dark-mode-toggle">
+                        <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
+                        <label for="darkModeToggle" class="toggle-label">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                            <span class="ball"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="widgets-grid">
+                <div class="widget metrics-widget">
+                    <h3><i class="fas fa-tachometer-alt"></i> Key Metrics</h3>
+                    <div class="metric-item">
+                        <span class="metric-value">12,500+</span>
+                        <span class="metric-label">Clients Served</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">92%</span>
+                        <span class="metric-label">Avg. Satisfaction</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">45</span>
+                        <span class="metric-label">Facilities Covered</span>
+                    </div>
+                </div>
+
+                <div class="widget testimonials-widget">
+                    <h3><i class="fas fa-comments"></i> Testimonials</h3>
+                    <div class="testimonial-item">
+                        <blockquote>"This tool provides incredible insights that have helped us improve our care delivery significantly."</blockquote>
+                        <cite>- Facility Manager, Kwara State</cite>
+                    </div>
+                    <div class="testimonial-item">
+                        <blockquote>"Understanding the drivers of satisfaction is a game-changer for patient retention."</blockquote>
+                        <cite>- Healthcare Provider</cite>
+                    </div>
+                </div>
+
+                <div class="widget activity-widget">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle success"></i> Prediction for Client #4821 - High Satisfaction</li>
+                        <li><i class="fas fa-exclamation-triangle warning"></i> Prediction for Client #4820 - Low Satisfaction</li>
+                        <li><i class="fas fa-check-circle success"></i> Prediction for Client #4819 - High Satisfaction</li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section class="input-form-section" id="inputFormSection">
+                <h2><i class="fas fa-clipboard-list"></i> Client & Provider Interaction Details</h2>
+                <form id="predictionForm">
+                    <div class="form-group-grid">
+                        <fieldset>
+                            <legend>Patient Demographics</legend>
+                            <div>
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" name="Age" min="18" max="100" value="45" required>
+                            </div>
+                            <div>
+                                <label for="employment">Employment Status:</label>
+                                <select id="employment" name="Employment_Grouped" required></select>
+                            </div>
+                            <div>
+                                <label for="education">Education Level:</label>
+                                <select id="education" name="Education_Grouped" required></select>
+                            </div>
+                            <div>
+                                <label for="state">State:</label>
+                                <select id="state" name="State" required></select>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Care History (in Years)</legend>
+                            <div>
+                                <label for="hivDuration">Duration of HIV Diagnosis:</label>
+                                <input type="number" id="hivDuration" name="HIV_Duration_Years" min="0.0" step="0.5" value="5.0" required>
+                            </div>
+                            <div>
+                                <label for="careDuration">Duration at This Facility:</label>
+                                <input type="number" id="careDuration" name="Care_Duration_Years" min="0.0" step="0.5" value="5.0" required>
+                            </div>
+                            <div>
+                                <label for="facilityCareDuration">Total Duration in Care:</label>
+                                <input type="number" id="facilityCareDuration" name="Facility_Care_Dur_Years" min="0.0" step="0.5" value="2.5" required>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Patient Engagement & Experience</legend>
+                            <div>
+                                <label for="empathyScore">
+                                    Empathy Score
+                                    <sub>Composite of: Personal Concern, Greeting/Comfort, Response to Questions, Time Spent</sub>
+                                </label>
+                                <input type="number" id="empathyScore" name="Empathy_Score" min="1" max="5" step="1" value="3" required>
+                            </div>
+                            <div>
+                                <label for="listeningScore">
+                                    Listening Score
+                                    <sub>Composite of: Encouraged Thoughts, Listened Carefully, Understood You</sub>
+                                </label>
+                                <input type="number" id="listeningScore" name="Listening_Score" min="1" max="5" step="1" value="3" required>
+                            </div>
+                            <div>
+                                <label for="decisionScore">
+                                    Decision Share Score
+                                    <sub>Composite of: Involved in Decisions, Checked Understanding, Encouraged Questions</sub>
+                                </label>
+                                <input type="number" id="decisionScore" name="Decision_Share_Score" min="1" max="5" step="1" value="3" required>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset class="communication-fieldset">
+                            <legend>Communication & Information</legend>
+                            <div class="form-fields-wrapper">
+                                <div>
+                                    <label for="examExplained">Exams/procedures explained clearly:</label>
+                                    <select id="examExplained" name="Exam_Explained" required>
+                                        <option value="Strongly Disagree">Strongly Disagree</option>
+                                        <option value="Disagree">Disagree</option>
+                                        <option value="Neither Agree Or Disagree" selected>Neither Agree Or Disagree</option>
+                                        <option value="Agree">Agree</option>
+                                        <option value="Strongly Agree">Strongly Agree</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="discussNextSteps">Discussed next steps in care:</label>
+                                    <select id="discussNextSteps" name="Discuss_NextSteps" required>
+                                        <option value="Strongly Disagree">Strongly Disagree</option>
+                                        <option value="Disagree">Disagree</option>
+                                        <option value="Neither Agree Or Disagree" selected>Neither Agree Or Disagree</option>
+                                        <option value="Agree">Agree</option>
+                                        <option value="Strongly Agree">Strongly Agree</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button type="submit"><i class="fas fa-rocket"></i> Predict & Explain Satisfaction</button>
+                </form>
+            </section>
+            
+            <section id="results-section" class="results-section" style="display: none;">
+                <h2>Prediction Results</h2>
+                <div class="prediction-metrics">
+                    <div class="metric-card">
+                        <h3>Predicted Satisfaction Level</h3>
+                        <p id="predictedSatisfaction" class="big-text"></p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Prediction Confidence</h3>
+                        <p id="predictionConfidence" class="big-text"></p>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openTab(event, 'aiSummary')"><i class="fas fa-sparkles"></i> AI Summary</button>
+                    <button class="tab-button" onclick="openTab(event, 'detailedAnalysis')"><i class="fas fa-brain"></i> Detailed Analysis</button>
+                    <button class="tab-button" onclick="openTab(event, 'modelInput')"><i class="fas fa-cog"></i> Model Input</button>
+                </div>
+                
+                <div id="aiSummary" class="tab-content active">
+                    <h3><i class="fas fa-file-alt"></i> Generative AI Explanation</h3>
+                    <div id="genaiExplanation" class="explanation-content"></div>
+                </div>
+                
+                <div id="detailedAnalysis" class="tab-content">
+                    <h3><i class="fas fa-bullseye"></i> Top Contributing Factors (SHAP)</h3>
+                    <ul id="topFeaturesList" class="features-list"></ul>
+                    <h3><i class="fas fa-chart-bar"></i> SHAP Feature Importance</h3>
+                    <div id="shapWaterfallPlot" class="chart-container">
+                        <canvas id="shapBarChart"></canvas>
+                    </div>
+                </div>
+                
+                <div id="modelInput" class="tab-content">
+                    <h3><i class="fas fa-database"></i> Features Sent to Model</h3>
+                    <pre><code id="modelInputJson"></code></pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="social-media-icons">
+        <a href="https://ahfid.org/contact-us/#" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+        <a href="https://wa.me/2348034011043" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://x.com/Ahfidorg" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://instagram.com/Ahfidorg" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@AfricaHubforInnovation" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://web.facebook.com/profile.php?id=61578622870670" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+    </div>
+
+    <img src="/static/images/ahfid.png" alt="AHFID Logo" class="ahfid-logo-bottom">
+
+    <footer>
+        <p>&copy; 2025 Gamsuwa - Africa Hub for Innovation and Development. All rights reserved.</p>
+    </footer>
+
+    <!--<script src="/static/js/script.js"></script>-->
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

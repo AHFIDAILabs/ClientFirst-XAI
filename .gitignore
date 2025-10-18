@@ -209,3 +209,7 @@ __marimo__/
 # CatBoost training artifacts
 catboost_info/
 
+# Created/generated files, directories and artifacts
+*.catboost_info
+htmlcov/
+.tox/

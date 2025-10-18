@@ -1,0 +1,23 @@
+MODEL_PARAMS:
+  depth: [4, 6, 8]
+  learning_rate: [0.01, 0.05, 0.1]
+  iterations: [100, 200, 300]
+  l2_leaf_reg: [1, 3, 5, 7, 9]
+  border_count: [32, 64, 128]
+  verbose: 0
+  random_state: 42
+
+TRAINING:
+  test_size: 0.2
+  random_state: 42
+  cv_splits: 5
+  scoring: f1_weighted
+  n_jobs: -1
+  top_n_features: 10
+
+LABEL_MAPPING:
+  0: Very Dissatisfied
+  1: Dissatisfied
+  2: Neutral
+  3: Satisfied
+  4: Very Satisfied 

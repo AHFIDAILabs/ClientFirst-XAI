@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Gamsuwa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/images/icons.jpg">
+</head>
+<body class="faq-page">
+    <div class="container">
+        <header>
+            <div class="header-container">
+                <div class="brand-section">
+                    <h1>Gamsuwa</h1>
+                </div>
+                
+                <div class="nav-section">
+                    <nav class="main-nav">
+                        <a href="/"><i class="fas fa-home"></i><span>Home</span></a>
+                        <a href="/dashboard"><i class="fas fa-chart-line"></i><span>Prediction</span></a>
+                        <a href="/contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+                        <a href="/faq"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+                    </nav>
+                    
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <div class="dark-mode-toggle">
+                        <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
+                        <label for="darkModeToggle" class="toggle-label">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                            <span class="ball"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="faq-section">
+                <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                <p class="faq-intro">Find answers to common questions about Gamsuwa and how our platform can help improve HIV client satisfaction.</p>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-info-circle"></i> About Gamsuwa</h3>
+                    
+                    <div class="faq-item">
+                        <h4>What is Gamsuwa?</h4>
+                        <p>Gamsuwa is an AI-powered platform that predicts and explains HIV client satisfaction based on service interaction data. It uses machine learning and explainable AI to help healthcare providers understand what drives patient satisfaction and improve care quality.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Who developed Gamsuwa?</h4>
+                        <p>Gamsuwa was developed by the Africa Hub for Innovation and Development (AHFID), a leading organization focused on leveraging technology and innovation to improve healthcare outcomes across Africa.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What does "Gamsuwa" mean?</h4>
+                        <p>Gamsuwa is derived from the Hausa language, meaning "gratitude" or "appreciation," reflecting our commitment to understanding and improving client satisfaction in healthcare settings.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-brain"></i> How It Works</h3>
+                    
+                    <div class="faq-item">
+                        <h4>How does the prediction model work?</h4>
+                        <p>Our model uses CatBoost, a state-of-the-art machine learning algorithm, trained on real-world HIV client satisfaction data. It analyzes multiple factors including demographics, care history, provider interactions, and communication quality to predict satisfaction levels.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What are SHAP values?</h4>
+                        <p>SHAP (SHapley Additive exPlanations) values provide insights into how each feature contributes to the prediction. They help explain which factors had the most positive or negative impact on the predicted satisfaction level.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>How accurate is the model?</h4>
+                        <p>The predictive model is trained on real-world data and optimized for both accuracy and fairness, achieving an average accuracy of over 85%. However, no prediction is perfect - use it as guidance alongside professional judgment, not as a definitive assessment.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What is the Generative AI explanation?</h4>
+                        <p>Our platform uses advanced language models to generate human-readable explanations of predictions, translating technical model outputs into actionable insights that healthcare providers can easily understand and act upon.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-shield-alt"></i> Privacy & Security</h3>
+                    
+                    <div class="faq-item">
+                        <h4>Is my data secure?</h4>
+                        <p>Yes! All inputs are anonymized and never stored or shared. Your privacy is our top priority. We process data in real-time for predictions and discard it immediately after generating results.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Do you collect personal information?</h4>
+                        <p>We only collect anonymized, aggregated data for improving our model. No personally identifiable information (PII) is collected, stored, or transmitted. The platform is designed with privacy-by-design principles.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Is the platform HIPAA compliant?</h4>
+                        <p>While we implement security best practices and privacy safeguards, we recommend that users consult with their legal and compliance teams to ensure the platform meets their specific regulatory requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-user-md"></i> For Healthcare Providers</h3>
+                    
+                    <div class="faq-item">
+                        <h4>Can providers use this tool for training?</h4>
+                        <p>Absolutely! Gamsuwa provides detailed explanations that can help improve provider-client communication. The insights can be used in training programs to identify areas for improvement in patient-centered care delivery.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>How can I integrate this into my facility?</h4>
+                        <p>Gamsuwa offers both a web-based interface and an API for integration with existing systems. Contact us at <a href="mailto:aiteam@ahfid.org">aiteam@ahfid.org</a> to discuss integration options for your facility.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What kind of support do you offer?</h4>
+                        <p>We provide comprehensive support including user documentation, training materials, technical assistance, and ongoing consultation to ensure successful implementation and use of the platform. Contact our support team for personalized assistance.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-chart-line"></i> Using the Platform</h3>
+                    
+                    <div class="faq-item">
+                        <h4>How do I make a prediction?</h4>
+                        <p>Simply navigate to the Dashboard, fill in the client information form with demographics, care history, and interaction details, then click "Predict & Explain Satisfaction." You'll receive instant results with detailed explanations.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What information do I need to provide?</h4>
+                        <p>You'll need basic demographic information (age, employment, education), care history (HIV diagnosis duration, facility duration), provider interaction scores (empathy, listening, decision-sharing), and communication assessments.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Can I download or save the results?</h4>
+                        <p>Currently, results are displayed on-screen. We recommend taking screenshots or copying the text for your records. We're working on adding export functionality in future updates.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>How should I interpret the confidence score?</h4>
+                        <p>The confidence score indicates how certain the model is about its prediction. Higher scores (above 70%) suggest more reliable predictions, while lower scores indicate more uncertainty and should be interpreted with additional context.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-cogs"></i> Technical Questions</h3>
+                    
+                    <div class="faq-item">
+                        <h4>What browsers are supported?</h4>
+                        <p>Gamsuwa works best on modern browsers including Chrome, Firefox, Safari, and Edge (latest versions). We recommend keeping your browser updated for the best experience.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Is there a mobile app?</h4>
+                        <p>Currently, Gamsuwa is a web-based platform that's fully responsive and works on mobile devices through your browser. A dedicated mobile app is in our development roadmap.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Can I access the API?</h4>
+                        <p>Yes! Gamsuwa offers a RESTful API for programmatic access. Visit our <a href="/dashboard">Dashboard</a> or contact us at <a href="mailto:aiteam@ahfid.org">aiteam@ahfid.org</a> for API documentation and access credentials.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What if I encounter an error?</h4>
+                        <p>If you experience technical issues, please try refreshing the page or clearing your browser cache. If problems persist, contact our technical support team with details about the error message and your browser information.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-dollar-sign"></i> Pricing & Access</h3>
+                    
+                    <div class="faq-item">
+                        <h4>Is Gamsuwa free to use?</h4>
+                        <p>The basic web interface is currently available for demonstration and evaluation purposes. For institutional deployment and API access, please contact us to discuss licensing options tailored to your needs.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Are there any usage limits?</h4>
+                        <p>The demonstration version has reasonable usage limits to ensure fair access for all users. For unlimited access and additional features, consider our institutional licensing options.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3><i class="fas fa-lightbulb"></i> Best Practices</h3>
+                    
+                    <div class="faq-item">
+                        <h4>How can I get the most accurate predictions?</h4>
+                        <p>Provide complete and accurate information for all required fields. The more detailed and accurate your input, the more reliable the prediction will be. When uncertain, use the midpoint or most likely value.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Should I use this to replace clinical judgment?</h4>
+                        <p>No. Gamsuwa is a decision-support tool designed to augment, not replace, professional judgment. Always combine AI insights with clinical expertise, patient context, and professional experience.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>How often is the model updated?</h4>
+                        <p>We continuously monitor model performance and update it periodically with new data to ensure accuracy and relevance. Major updates are announced through our communication channels.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-cta">
+                    <h3>Still Have Questions?</h3>
+                    <p>We're here to help! If you couldn't find the answer you were looking for, please don't hesitate to reach out.</p>
+                    <div class="cta-buttons">
+                        <a href="/contact" class="cta-button primary">
+                            <i class="fas fa-envelope"></i> Contact Us
+                        </a>
+                        <a href="/dashboard" class="cta-button secondary">
+                            <i class="fas fa-chart-line"></i> Try the Dashboard
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="social-media-icons">
+        <a href="https://ahfid.org/contact-us/#" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+        <a href="https://wa.me/2348034011043" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://x.com/Ahfidorg" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://instagram.com/Ahfidorg" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@AfricaHubforInnovation" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://web.facebook.com/profile.php?id=61578622870670" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+    </div>
+
+    <img src="/static/images/ahfid.png" alt="AHFID Logo" class="ahfid-logo-bottom">
+
+    <footer>
+        <p>&copy; 2025 Gamsuwa - Africa Hub for Innovation and Development. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: data/processed_data.csv
+  local_data_file: artifacts/data_ingestion/data.csv
+
+prepare_base_model:
+  root_dir: artifacts/prepare_base_model
+  label_encoder_path: artifacts/prepare_base_model/label_encoder.joblib
+  categories_path: artifacts/prepare_base_model/categories.joblib
+
+model_trainer:
+  root_dir: artifacts/model_training
+  trained_model_path: artifacts/model_training/model.joblib
+  important_features_path: artifacts/model_training/important_features.joblib
+  top_categorical_features_path: artifacts/model_training/top_categorical_features.joblib
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_ingestion/data.csv
+  model_path: artifacts/model_training/model.joblib
+  evaluation_report_path: artifacts/model_evaluation/evaluation_report.json
