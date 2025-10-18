@@ -10,7 +10,12 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
+# Copy setup.py and other package files FIRST
+COPY setup.py .
+COPY README.md .
+COPY src/ src/
+
+# Copy requirements
 COPY requirements.txt .
 
 # Install Python dependencies
@@ -28,8 +33,10 @@ COPY --from=builder /root/.local /root/.local
 # Make sure scripts in .local are usable
 ENV PATH=/root/.local/bin:$PATH
 
-# Copy application code
-COPY . .
+# Copy application code and config
+COPY app/ app/
+COPY config/ config/
+COPY src/ src/
 
 # Create necessary directories
 RUN mkdir -p artifacts/model_training \
